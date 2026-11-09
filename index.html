@@ -3,120 +3,252 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PRETTY BY STANCY - Luxury Dresses</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<title>Pretty by Stancy | Women's Fashion Boutique - Accra, Ghana</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',sans-serif;background:#FFF9F5;color:#1a1a1a}
-header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);display:flex;justify-content:space-between;align-items:center;padding:16px 5%;border-bottom:1px solid #f0e6e0}
-.logo{font-family:'Playfair Display',serif;font-size:22px;letter-spacing:2px;font-weight:700}
-.logo span{color:#C08A5A}
-nav a{margin:0 12px;text-decoration:none;color:#333;font-size:14px;font-weight:500}
-.btn{background:#1a1a1a;color:#fff;padding:10px 18px;border-radius:999px;border:none;cursor:pointer;font-weight:600}
-.hero{text-align:center;padding:50px 20px 20px}
-.hero h1{font-family:'Playfair Display',serif;font-size:42px;line-height:1.1}
-.hero h1 i{color:#C08A5A}
-.hero p{color:#777;margin:14px 0 20px}
-.filters{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:20px 0}
-.filters button{padding:9px 18px;border-radius:999px;border:1px solid #ddd;background:#fff;cursor:pointer}
-.filters button.active{background:#1a1a1a;color:#fff}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:20px 5% 60px;max-width:1100px;margin:auto}
-.card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.06)}
-.card img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;background:#f5eee8}
-.card-body{padding:14px}
-.badge{font-size:11px;background:#FFF0E6;color:#C08A5A;padding:4px 8px;border-radius:999px;font-weight:700}
-.card h3{font-family:'Playfair Display',serif;font-size:18px;margin:8px 0 4px}
-.price{font-weight:700;font-size:16px}
-.price s{color:#999;font-weight:400;font-size:13px;margin-left:6px}
-.card-body p{font-size:13px;color:#777;margin:6px 0 12px}
-.order{width:100%;background:#25D366;color:#fff;border:none;padding:12px;border-radius:999px;font-weight:700;cursor:pointer}
-.admin-bar{text-align:center;padding:0 0 30px}
-.admin-bar button{background:#fff;border:1px solid #ddd;padding:10px 18px;border-radius:999px;cursor:pointer}
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:99;align-items:center;justify-content:center;padding:16px}
-.modal.open{display:flex}
-.box{background:#fff;width:100%;max-width:480px;border-radius:20px;padding:22px;max-height:90vh;overflow:auto}
-.box input,.box textarea{width:100%;padding:12px;border:1px solid #ddd;border-radius:12px;margin:6px 0}
-.box h2{font-family:'Playfair Display',serif;margin-bottom:12px}
-.row{display:flex;gap:10px}
-.admin-item{display:flex;gap:10px;align-items:center;border:1px solid #eee;padding:8px;border-radius:12px;margin:8px 0}
-.admin-item img{width:50px;height:60px;object-fit:cover;border-radius:8px}
-footer{text-align:center;padding:30px;color:#888;font-size:13px}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+:root{--pink:#C9376E;--pink-light:#FDF2F6;--pink-soft:#FCE7EF;--dark:#1A1A1A;--grey:#6B6B6B;--light-grey:#F7F7F7;--border:#EDEDED;--gold:#B9975B}
+body{background:#fff;color:var(--dark);line-height:1.6}
+a{color:inherit;text-decoration:none}
+.top-bar{background:#1A1A1A;color:#fff;text-align:center;padding:9px 15px;font-size:12.5px;letter-spacing:.4px}
+.top-bar b{color:#F8C8D8}
+header{position:sticky;top:0;z-index:100;background:#fff;display:flex;justify-content:space-between;align-items:center;padding:16px 5%;border-bottom:1px solid var(--border)}
+.logo{font-family:'Playfair Display',serif;font-size:27px;font-weight:700;letter-spacing:-.5px}.logo span{color:var(--pink);font-weight:500;font-size:14px;display:block;letter-spacing:3px;text-transform:uppercase;margin-top:-2px}
+nav{display:flex;gap:28px;font-size:13.5px;font-weight:500;letter-spacing:.3px;text-transform:uppercase}nav a:hover{color:var(--pink)}
+.header-actions{display:flex;gap:12px;align-items:center}
+.search-input{padding:9px 14px;border:1px solid var(--border);border-radius:25px;width:170px;font-size:13px;outline:none}
+.cart-btn{background:var(--dark);color:#fff;border:none;padding:11px 20px;border-radius:25px;cursor:pointer;font-weight:600;font-size:13px}.cart-btn:hover{background:var(--pink)}.cart-btn span{background:var(--pink);color:#fff;padding:2px 7px;border-radius:50%;margin-left:6px;font-size:11px}
+.hero{background:var(--pink-light);display:grid;grid-template-columns:1.05fr .95fr;gap:0;align-items:center;min-height:520px}
+.hero-text{padding:50px 5% 50px 8%}
+.hero-text small{color:var(--pink);font-weight:700;letter-spacing:2px;font-size:11px;text-transform:uppercase}
+.hero-text h1{font-family:'Playfair Display',serif;font-size:54px;line-height:1.08;margin:16px 0;font-weight:700}.hero-text h1 em{color:var(--pink);font-style:italic}
+.hero-text p{color:var(--grey);margin-bottom:28px;max-width:460px;font-size:15.5px}
+.btn{padding:14px 28px;border-radius:30px;border:none;cursor:pointer;font-weight:600;font-size:14px}.btn-pink{background:var(--pink);color:#fff}.btn-pink:hover{background:#A82A5A}.btn-outline{background:transparent;border:1px solid var(--dark);margin-left:10px}
+.hero-img{height:520px;overflow:hidden}.hero-img img{width:100%;height:100%;object-fit:cover}
+.hero-stats{display:flex;gap:32px;margin-top:32px;border-top:1px solid #E8D5DC;padding-top:22px}.hero-stats div b{font-size:20px;display:block}.hero-stats div span{font-size:12px;color:var(--grey);text-transform:uppercase;letter-spacing:.5px}
+.trust-bar{display:flex;justify-content:space-between;gap:20px;padding:20px 5%;border-bottom:1px solid var(--border);flex-wrap:wrap}.trust-bar div{font-size:13px}.trust-bar b{display:block;font-size:13px}.trust-bar span{color:var(--grey)}
+.section{padding:56px 5%}.section h2{font-family:'Playfair Display',serif;font-size:34px;text-align:center}.section p.sub{text-align:center;color:var(--grey);margin:8px 0 32px;font-size:15px}
+.collections{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;padding:0 5% 56px}.coll{border-radius:14px;overflow:hidden;position:relative;height:280px;cursor:pointer}.coll img{width:100%;height:100%;object-fit:cover;transition:.5s}.coll:hover img{transform:scale(1.05)}.coll div{position:absolute;bottom:0;left:0;right:0;padding:22px;background:linear-gradient(transparent,rgba(0,0,0,.7));color:#fff}.coll div h3{font-family:'Playfair Display',serif;font-size:22px}.coll div p{font-size:13px;opacity:.9}.coll div span{display:inline-block;margin-top:10px;background:#fff;color:#111;padding:7px 14px;border-radius:20px;font-size:12px;font-weight:600}
+.filters{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:30px}.filters button{padding:10px 20px;border-radius:25px;border:1px solid var(--border);background:#fff;cursor:pointer;font-size:13px;font-weight:500}.filters button.active,.filters button:hover{background:var(--dark);color:#fff;border-color:var(--dark)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:24px}
+.card{background:#fff;border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:.3s;position:relative}.card:hover{box-shadow:0 12px 30px rgba(0,0,0,.08);transform:translateY(-3px)}
+.card-img-wrap{position:relative;overflow:hidden}.card img{width:100%;height:320px;object-fit:cover;display:block}.card.out img{filter:grayscale(40%);opacity:.6}
+.card-body{padding:18px}
+.badge{font-size:10.5px;background:var(--pink-soft);color:var(--pink);padding:5px 10px;border-radius:20px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+.badge-out{position:absolute;top:14px;left:14px;background:#111;color:#fff;padding:7px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:.5px;z-index:2}
+.badge-low{position:absolute;top:14px;right:14px;background:#D97706;color:#fff;padding:5px 10px;border-radius:20px;font-size:11px;font-weight:700;z-index:2}
+.card-body h3{font-size:16px;margin:10px 0 4px;font-weight:600;line-height:1.4}.stars{color:#D97706;font-size:12px;letter-spacing:1px}
+.price{font-size:18px;font-weight:700;color:var(--dark);margin:8px 0}.price s{color:#aaa;font-size:14px;font-weight:400;margin-left:6px}.price span{font-size:12px;color:var(--pink);background:var(--pink-soft);padding:3px 7px;border-radius:10px;margin-left:6px}
+.stock{font-size:12.5px;font-weight:600;margin:4px 0}.stock.in{color:#15803D}.stock.out{color:#DC2626}.stock.low{color:#D97706}
+.opt-label{font-size:11px;font-weight:700;color:var(--grey);letter-spacing:.6px;text-transform:uppercase;margin:12px 0 6px;display:block}
+.sizes{display:flex;gap:6px;flex-wrap:wrap}.sizes button{min-width:38px;height:36px;padding:0 8px;border-radius:8px;border:1px solid var(--border);background:#fff;cursor:pointer;font-size:12.5px;font-weight:500}.sizes button.selected{background:var(--dark);color:#fff;border-color:var(--dark)}
+.colors{display:flex;gap:8px}.color{width:26px;height:26px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px #ddd;cursor:pointer}.color.selected{box-shadow:0 0 0 2px var(--pink)}
+.add-btn{width:100%;margin-top:16px;padding:13px;background:var(--dark);color:#fff;border:none;border-radius:10px;cursor:pointer;font-weight:600;font-size:13.5px}.add-btn:hover{background:var(--pink)}.add-btn:disabled{background:#D1D5DB;cursor:not-allowed}
+.notify-btn{width:100%;margin-top:8px;padding:11px;background:#fff;border:1px solid var(--pink);color:var(--pink);border-radius:10px;cursor:pointer;font-weight:600;font-size:13px}
+#cartDrawer{position:fixed;right:-100%;top:0;width:400px;max-width:94%;height:100%;background:#fff;z-index:200;box-shadow:-10px 0 30px rgba(0,0,0,.15);transition:.4s;padding:24px;overflow-y:auto}#cartDrawer.open{right:0}
+.cart-item{display:flex;gap:12px;margin:14px 0;border-bottom:1px solid var(--border);padding-bottom:14px}.cart-item img{width:72px;height:88px;object-fit:cover;border-radius:10px}
+.qty button{width:26px;height:26px;border-radius:50%;border:1px solid #ddd;background:#fff;cursor:pointer}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;z-index:150}.overlay.show{display:block}
+.checkout{max-width:820px;margin:0 auto;background:#fff;padding:32px;border:1px solid var(--border);border-radius:16px}
+.checkout h3{font-family:'Playfair Display',serif;font-size:20px;margin:22px 0 12px}
+input,select,textarea{width:100%;padding:13px 14px;border:1px solid var(--border);border-radius:10px;margin-bottom:12px;background:#FAFAFA;font-size:14px;outline:none}input:focus,select:focus,textarea:focus{border-color:var(--pink);background:#fff}
+.pay-tabs{display:flex;gap:10px}.pay-tabs button{flex:1;padding:13px;border-radius:10px;border:1px solid var(--border);background:#fff;cursor:pointer;font-weight:600;font-size:13px}.pay-tabs button.active{background:var(--dark);color:#fff;border-color:var(--dark)}
+.momo-logos{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.momo-logos span{padding:7px 12px;border-radius:20px;font-size:12px;font-weight:700}.mtn{background:#FFCC00}.telecel{background:#111;color:#fff}.airtel{background:#E40000;color:#fff}
+.contact{background:#1A1A1A;color:#fff;border-radius:18px;margin:0 5% 40px;padding:44px;display:grid;grid-template-columns:1fr 1fr;gap:36px}.contact input,.contact textarea{background:#fff;color:#000}.contact h2{font-family:'Playfair Display',serif;font-size:32px}.contact a{color:#F8C8D8;text-decoration:underline}
+footer{text-align:center;padding:24px;color:#888;font-size:13px;border-top:1px solid var(--border)}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--dark);color:#fff;padding:13px 24px;border-radius:30px;z-index:300;display:none;font-size:14px}
+@media(max-width:820px){.hero{grid-template-columns:1fr}.hero-img{height:320px}.hero-text h1{font-size:38px}.collections{grid-template-columns:1fr}.contact{grid-template-columns:1fr}nav{display:none}.search-input{display:none}}
 </style>
 </head>
 <body>
-<header><div class="logo">PRETTY <span>BY STANCY</span></div><nav><a href="#">Shop</a><a href="#">New</a><a href="#">Sale</a></nav><button class="btn" onclick="openAdmin()">Admin</button></header>
-<div class="hero"><h1>Wear Pretty.<br><i>Feel Like Royalty.</i></h1><p>Luxury dresses in Accra • Delivery available • Pay on delivery</p><div class="filters"><button class="active" onclick="filterCat('All',this)">All</button><button onclick="filterCat('Evening',this)">Evening</button><button onclick="filterCat('Casual',this)">Casual</button><button onclick="filterCat('Party',this)">Party</button></div></div>
-<div class="grid" id="grid"><p style="grid-column:1/-1;text-align:center;color:#888">Loading dresses...</p></div>
-<div class="admin-bar"><button onclick="openAdmin()">+ Open Admin Dashboard to Add Dress</button></div>
-<footer>PRETTY BY STANCY • Accra, Ghana • WhatsApp: +233 59 527 0488 • © 2026</footer>
-<div class="modal" id="adminModal"><div class="box">
-<h2>Admin Dashboard</h2>
-<p style="font-size:13px;color:#777">Add a new dress. For image, paste an image link (URL)</p>
-<input id="pName" placeholder="Dress Name e.g. Royal Satin Gown">
-<div class="row"><input id="pPrice" type="number" placeholder="Price GH₵ e.g. 450"><input id="pOld" type="number" placeholder="Old Price (optional)"></div>
-<input id="pCat" placeholder="Category: Evening / Casual / Party">
-<input id="pImg" placeholder="Paste Image Link (URL) here - https://...">
-<textarea id="pDesc" placeholder="Description"></textarea>
-<button class="btn" style="width:100%;padding:14px" onclick="addDress()">+ Add Dress to Website</button>
-<button onclick="closeAdmin()" style="width:100%;margin-top:10px;padding:12px;border:none;background:#f5f5f5;border-radius:999px;cursor:pointer">Close</button>
-<h3 style="margin-top:18px">Your Dresses</h3>
-<div id="adminList"></div>
-</div></div>
+
+<div class="top-bar">Free Delivery in Accra on orders over GH¢500 &nbsp;|&nbsp; <b>New Collection Now Live</b> &nbsp;|&nbsp; WhatsApp: +233 59 527 0488</div>
+
+<header>
+  <div class="logo">Pretty by Stancy<span>Accra • Ghana</span></div>
+  <nav><a href="#home">Home</a><a href="#shop">Shop</a><a href="#collections">Collections</a><a href="#checkout">Checkout</a><a href="#contact">Contact</a></nav>
+  <div class="header-actions"><input class="search-input" placeholder="Search dresses, sets..." onkeyup="searchProducts(this.value)"><button class="cart-btn" onclick="openCart()">Cart <span id="cartCount">0</span></button></div>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-text">
+    <small>New Collection — 2026</small>
+    <h1>Elegant. Confident.<br><em>Beautifully You.</em></h1>
+    <p>Premium dresses, two-piece sets and everyday essentials, curated for the modern woman. Quality fabrics, perfect fit, and delivery across Ghana.</p>
+    <button class="btn btn-pink" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Shop New Arrivals</button>
+    <button class="btn btn-outline" onclick="document.getElementById('collections').scrollIntoView({behavior:'smooth'})">View Collections</button>
+    <div class="hero-stats"><div><b>2,300+</b><span>Happy Customers</span></div><div><b>4.9 / 5</b><span>Average Rating</span></div><div><b>Same-Day</b><span>Accra Delivery</span></div></div>
+  </div>
+  <div class="hero-img"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900&q=80" alt="Pretty by Stancy Fashion"></div>
+</section>
+
+<div class="trust-bar"><div><b>Nationwide Delivery</b><span>Accra, Kumasi, Takoradi & more</span></div><div><b>Secure Payment</b><span>Mobile Money, Card & Pay on Delivery</span></div><div><b>Easy Exchange</b><span>3-day size exchange policy</span></div><div><b>WhatsApp Support</b><span>Replies within 10 minutes, 9am - 9pm</span></div></div>
+
+<section class="section" id="collections" style="padding-bottom:20px">
+  <h2>Shop by Collection</h2>
+  <p class="sub">Curated edits for every occasion</p>
+  <div class="collections" style="padding:0">
+    <div class="coll" onclick="filterCat('dresses')"><img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&q=80"><div><h3>Party Dresses</h3><p>From GH¢180</p><span>Shop Dresses</span></div></div>
+    <div class="coll" onclick="filterCat('sets')"><img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=600&q=80"><div><h3>Two-Piece Sets</h3><p>From GH¢220</p><span>Shop Sets</span></div></div>
+    <div class="coll" onclick="filterCat('tops')"><img src="https://images.unsplash.com/photo-1554412933-514a83d2f3c8?w=600&q=80"><div><h3>Everyday Tops</h3><p>From GH¢95</p><span>Shop Tops</span></div></div>
+  </div>
+</section>
+
+<section class="section" id="shop" style="padding-top:10px">
+  <h2>Bestsellers</h2>
+  <p class="sub">Real photos, transparent pricing and live stock status</p>
+  <div class="filters">
+    <button class="active" onclick="filterCat('all',this)">All Products</button>
+    <button onclick="filterCat('dresses',this)">Dresses</button>
+    <button onclick="filterCat('sets',this)">Two-Piece Sets</button>
+    <button onclick="filterCat('tops',this)">Tops</button>
+    <button onclick="filterCat('skirts',this)">Skirts & Jeans</button>
+  </div>
+  <div class="grid" id="productGrid"></div>
+</section>
+
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+<div id="cartDrawer">
+  <h2 style="font-family:'Playfair Display',serif">Shopping Bag <span style="float:right;cursor:pointer" onclick="closeCart()">Close</span></h2>
+  <p style="color:#888;font-size:13px;margin:6px 0 10px">Free delivery in Accra on orders over GH¢500</p>
+  <div id="cartItems"></div>
+  <div id="cartSummary"></div>
+  <button class="btn btn-pink" style="width:100%;margin-top:15px" onclick="closeCart();document.getElementById('checkout').scrollIntoView({behavior:'smooth'})">Proceed to Checkout</button>
+</div>
+
+<section class="section" id="checkout">
+  <h2>Checkout</h2>
+  <p class="sub">Pay securely with Mobile Money or Card</p>
+  <div class="checkout">
+    <h3>1. Delivery Details</h3>
+    <input id="custName" placeholder="Full Name *">
+    <input id="custPhone" placeholder="Phone / WhatsApp Number * e.g. 059 527 0488">
+    <input id="custLocation" placeholder="Delivery Location * e.g. East Legon, Accra">
+    <textarea placeholder="Delivery Notes (optional)"></textarea>
+    <h3>2. Payment Method</h3>
+    <div class="pay-tabs">
+      <button id="tabMomo" class="active" onclick="showPay('momo')">Mobile Money</button>
+      <button id="tabCard" onclick="showPay('card')">Debit / Credit Card</button>
+      <button id="tabCash" onclick="showPay('cash')">Pay on Delivery</button>
+    </div>
+    <div id="payMomo" style="margin-top:15px">
+      <div class="momo-logos"><span class="mtn">MTN MoMo</span><span class="telecel">Telecel Cash</span><span class="airtel">AirtelTigo Money</span></div>
+      <label style="font-size:13px;font-weight:600">Select Network</label>
+      <select id="momoNetwork"><option>MTN Mobile Money</option><option>Telecel Cash</option><option>AirtelTigo Money</option></select>
+      <input id="momoNumber" placeholder="MoMo Number e.g. 0595270488">
+      <p style="font-size:13px;color:#666;background:#FDF2F6;padding:13px;border-radius:10px">Send payment to <b>Pretty by Stancy - 059 527 0488</b>. You will receive a prompt to approve. Please send a screenshot on WhatsApp after payment.</p>
+    </div>
+    <div id="payCard" style="display:none;margin-top:15px">
+      <input placeholder="Card Number e.g. 1234 5678 9012 3456">
+      <div style="display:flex;gap:10px"><input placeholder="MM / YY"><input placeholder="CVV"></div>
+      <input placeholder="Name on Card">
+      <p style="font-size:12px;color:#888">Secured by Paystack / Flutterwave. We never store your card details.</p>
+    </div>
+    <div id="payCash" style="display:none;margin-top:15px"><p style="background:#FFFBEB;padding:13px;border-radius:10px;font-size:14px">Pay cash when your rider arrives. Please have the exact amount ready. GH¢30 delivery fee applies in Accra.</p></div>
+    <h3>3. Order Summary</h3>
+    <div id="checkoutSummary" style="background:#FAFAFA;padding:15px;border-radius:10px">Your cart is empty - add a product first.</div>
+    <button class="btn btn-pink" style="width:100%;margin-top:18px;font-size:15px" onclick="placeOrder()">Place Order</button>
+    <p style="text-align:center;font-size:12px;color:#888;margin-top:10px">By ordering, you agree to our 3-day exchange policy. Sale items are final sale.</p>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact">
+    <div>
+      <h2>Contact Us</h2>
+      <p style="margin:12px 0;color:#CBD5E1;line-height:1.7">Questions about sizing, delivery or restocking? Our team replies within 10 minutes between 9am - 9pm.</p>
+      <p><b>Location:</b> Accra, Ghana — Delivery Nationwide</p>
+      <p style="margin-top:10px"><b>WhatsApp / Phone:</b> <a href="https://wa.me/233595270488">+233 59 527 0488</a></p>
+      <p style="margin-top:10px"><b>Instagram:</b> <a href="#">@prettybystancy</a></p>
+      <p style="margin-top:10px"><b>Email:</b> prettybystancy@gmail.com</p>
+      <p style="margin-top:12px">Monday - Saturday: 9am - 9pm | Sunday: 12pm - 6pm</p>
+      <a href="https://wa.me/233595270488" style="display:inline-block;background:#25D366;color:#fff;padding:12px 22px;border-radius:30px;margin-top:18px;font-weight:600;text-decoration:none">Chat on WhatsApp</a>
+    </div>
+    <div>
+      <h3 style="margin-bottom:12px">Send an Enquiry</h3>
+      <input id="contactName" placeholder="Your Name">
+      <input id="contactPhone" placeholder="Phone / WhatsApp">
+      <textarea id="contactMsg" rows="4" placeholder="Hi Stancy, I would like to ask about..."></textarea>
+      <button class="btn btn-pink" style="width:100%" onclick="sendEnquiry()">Send Message via WhatsApp</button>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Pretty by Stancy. All rights reserved. | WhatsApp: +233 59 527 0488 | Accra, Ghana</footer>
+<div class="toast" id="toast"></div>
+
 <script>
-const firebaseConfig = {
-  apiKey: "AIzaSyC_1nLc4iStqqbXLtIoVhaUiLmq2SErt4",
-  authDomain: "pretty-by-stancy.firebaseapp.com",
-  projectId: "pretty-by-stancy",
-  storageBucket: "pretty-by-stancy.firebasestorage.app",
-  messagingSenderId: "59575460201",
-  appId: "1:59575460201:web:3be43bc32e3336b8d1f8",
-  measurementId: "G-ZPHX3PJ3GL"
-};
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
-let allDresses = [];
-let currentFilter = 'All';
-function filterCat(c, btn){ currentFilter = c; document.querySelectorAll('.filters button').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); render(); }
-function render(){
-  const grid = document.getElementById('grid');
-  let list = allDresses.filter(d=> currentFilter==='All' || d.category===currentFilter);
-  if(list.length===0){ grid.innerHTML='<p style="grid-column:1/-1;text-align:center;padding:40px;color:#888">No dresses yet. Click Admin to add your first dress.</p>'; return; }
-  grid.innerHTML = list.map(d=>`
-    <div class="card">
-      <img src="${d.image}" onerror="this.src='https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600'">
-      <div class="card-body">
-        <span class="badge">${d.category||'New'}</span>
-        <h3>${d.name}</h3>
-        <div class="price">GH₵ ${d.price} ${d.oldPrice?`<s>GH₵ ${d.oldPrice}</s>`:''}</div>
-        <p>${d.desc||'Premium quality • Available in Accra'}</p>
-        <button class="order" onclick="order('${d.name}',${d.price})">Order on WhatsApp</button>
-      </div>
-    </div>`).join('');
-  document.getElementById('adminList').innerHTML = allDresses.map(d=>`
-    <div class="admin-item"><img src="${d.image}"><div style="flex:1"><b>${d.name}</b><br><small>GH₵ ${d.price}</small></div><button onclick="deleteDress('${d.id}')" style="background:#ff4444;color:#fff;border:none;padding:8px 12px;border-radius:999px;cursor:pointer">Delete</button></div>`).join('');
+const products=[
+{id:1,name:"Blush Pink Satin Slip Dress",cat:"dresses",price:210,old:260,img:"https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&q=80",rating:"★★★★★ (128)",badge:"Bestseller",stock:8,sizes:["S","M","L","XL"],colors:["#FFB3C6","#000000","#FFFFFF"]},
+{id:2,name:"Lavender Two-Piece Co-ord Set",cat:"sets",price:250,old:300,img:"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=600&q=80",rating:"★★★★★ (96)",badge:"New In",stock:0,sizes:["XS","S","M","L"],colors:["#C9A7FF","#FFB3C6"]},
+{id:3,name:"White Cropped Baby Tee",cat:"tops",price:95,old:120,img:"https://images.unsplash.com/photo-1554412933-514a83d2f3c8?w=600&q=80",rating:"★★★★☆ (74)",badge:"Hot",stock:12,sizes:["S","M","L"],colors:["#FFFFFF","#FF8FAB","#000000"]},
+{id:4,name:"Cherry Red Bodycon Dress",cat:"dresses",price:195,old:230,img:"https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=600&q=80",rating:"★★★★★ (210)",badge:"Restocked",stock:3,sizes:["S","M","L","XL"],colors:["#E63946","#000000"]},
+{id:5,name:"Pink Pleated Mini Skirt",cat:"skirts",price:140,old:170,img:"https://images.unsplash.com/photo-1583496661160-fb5886a13d44?w=600&q=80",rating:"★★★★☆ (58)",badge:"Trending",stock:0,sizes:["S","M","L"],colors:["#FF8FAB","#FFFFFF"]},
+{id:6,name:"Soft Girl Knit Sweater - Baby Pink",cat:"tops",price:165,old:190,img:"https://images.unsplash.com/photo-1576871337622-98d48d1cf531?w=600&q=80",rating:"★★★★★ (89)",badge:"Cozy",stock:5,sizes:["S","M","L","XL"],colors:["#FFC8DD","#CDB4DB","#FFFFFF"]},
+{id:7,name:"Denim High-Waist Jeans",cat:"skirts",price:220,old:260,img:"https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=600&q=80",rating:"★★★★★ (143)",badge:"Bestseller",stock:7,sizes:["28","30","32","34"],colors:["#5A7D9A","#1A1A1A"]},
+{id:8,name:"Baby Pink Party Dress",cat:"dresses",price:280,old:340,img:"https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80",rating:"★★★★★ (167)",badge:"Party",stock:2,sizes:["S","M","L"],colors:["#FFB3C6","#FF5DA2"]},
+{id:9,name:"Floral Summer Maxi Dress",cat:"dresses",price:240,old:290,img:"https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=600&q=80",rating:"★★★★★ (112)",badge:"New In",stock:0,sizes:["S","M","L"],colors:["#FF8FAB","#FFFFFF"]},
+{id:10,name:"Black Elegant Evening Gown",cat:"dresses",price:320,old:380,img:"https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=600&q=80",rating:"★★★★★ (98)",badge:"Luxe",stock:4,sizes:["S","M","L"],colors:["#000000","#800020"]},
+{id:11,name:"Pink Ribbed Two-Piece Set",cat:"sets",price:230,old:270,img:"https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=600&q=80",rating:"★★★★☆ (65)",badge:"Cute",stock:9,sizes:["S","M","L","XL"],colors:["#FF8FAB","#FFFFFF","#000000"]},
+{id:12,name:"White Oversized Shirt Dress",cat:"tops",price:180,old:210,img:"https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&q=80",rating:"★★★★★ (77)",badge:"Classy",stock:0,sizes:["S","M","L"],colors:["#FFFFFF","#FFC8DD"]}
+];
+let cart=[];let selections={};let currentFilter='all';let searchTerm='';
+function stockLabel(p){if(p.stock===0)return `<div class="stock out">Out of Stock</div>`;if(p.stock<=3)return `<div class="stock low">Only ${p.stock} left in stock</div>`;return `<div class="stock in">In Stock — ${p.stock} available</div>`}
+function searchProducts(v){searchTerm=v.toLowerCase();renderProducts()}
+function renderProducts(){
+  const grid=document.getElementById('productGrid');grid.innerHTML='';
+  const list=products.filter(p=>(currentFilter==='all'||p.cat===currentFilter)&&(searchTerm===''||p.name.toLowerCase().includes(searchTerm)));
+  if(list.length===0){grid.innerHTML='<p style="grid-column:1/-1;text-align:center;color:#888">No products found.</p>';return}
+  list.forEach(p=>{
+    selections[p.id]={size:p.sizes[0],color:p.colors[0]};
+    const isOut=p.stock===0;
+    const discount=Math.round((1-p.price/p.old)*100);
+    grid.innerHTML+=`<div class="card ${isOut?'out':''}">${isOut?'<div class="badge-out">OUT OF STOCK</div>':''}${!isOut&&p.stock<=3?'<div class="badge-low">LOW STOCK</div>':''}<div class="card-img-wrap"><img src="${p.img}" alt="${p.name}"></div><div class="card-body"><span class="badge">${p.badge}</span><h3>${p.name}</h3><div class="stars">${p.rating}</div><div class="price">GH¢ ${p.price} <s>GH¢ ${p.old}</s><span>-${discount}%</span></div>${stockLabel(p)}<span class="opt-label">Select Size</span><div class="sizes">${p.sizes.map((s,i)=>`<button class="${i==0?'selected':''}" onclick="pickSize(${p.id},'${s}',this)">${s}</button>`).join('')}</div><span class="opt-label">Select Colour</span><div class="colors">${p.colors.map((c,i)=>`<div class="color ${i==0?'selected':''}" style="background:${c}" onclick="pickColor(${p.id},'${c}',this)"></div>`).join('')}</div><button class="add-btn" ${isOut?'disabled':''} onclick="addToCart(${p.id})">${isOut?'Out of Stock':'Add to Cart'}</button>${isOut?`<button class="notify-btn" onclick="notifyMe('${p.name}')">Notify Me When Available</button>`:''}</div></div>`;
+  });
 }
-function order(name, price){
-  const msg = encodeURIComponent(`Hello Pretty By Stancy! I want to order: ${name} - GH₵ ${price}`);
+function pickSize(id,size,el){selections[id].size=size;el.parentElement.querySelectorAll('button').forEach(b=>b.classList.remove('selected'));el.classList.add('selected')}
+function pickColor(id,color,el){selections[id].color=color;el.parentElement.querySelectorAll('.color').forEach(c=>c.classList.remove('selected'));el.classList.add('selected')}
+function filterCat(cat,btn){currentFilter=cat;if(btn){document.querySelectorAll('.filters button').forEach(b=>b.classList.remove('active'));btn.classList.add('active')}renderProducts();document.getElementById('shop').scrollIntoView({behavior:'smooth'})}
+function addToCart(id){
+  const p=products.find(x=>x.id===id);if(p.stock===0)return;
+  const sel=selections[id];const key=id+'-'+sel.size+'-'+sel.color;
+  const found=cart.find(i=>i.key===key);if(found){if(found.qty>=p.stock){showToast('Sorry, only '+p.stock+' left in stock.');return}found.qty++}else cart.push({key,...p,...sel,qty:1});
+  updateCart();showToast(p.name+' added to bag');openCart();
+}
+function updateCart(){
+  document.getElementById('cartCount').innerText=cart.reduce((a,b)=>a+b.qty,0);
+  const wrap=document.getElementById('cartItems');
+  if(cart.length===0){wrap.innerHTML='<p style="text-align:center;color:#888;margin:20px 0">Your bag is empty.</p>';document.getElementById('cartSummary').innerHTML='';document.getElementById('checkoutSummary').innerHTML='Your cart is empty - add a product first.';return}
+  wrap.innerHTML=cart.map((i,idx)=>`<div class="cart-item"><img src="${i.img}"><div style="flex:1"><b style="font-size:14px">${i.name}</b><br><small>Size: ${i.size} • <span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:${i.color};vertical-align:middle"></span></small><br><b>GH¢ ${i.price*i.qty}</b><div class="qty" style="margin-top:6px"><button onclick="changeQty(${idx},-1)">-</button> ${i.qty} <button onclick="changeQty(${idx},1)">+</button> <span style="float:right;cursor:pointer" onclick="removeItem(${idx})">Remove</span></div></div></div>`).join('');
+  const subtotal=cart.reduce((a,b)=>a+b.price*b.qty,0);const delivery=subtotal>=500?0:30;const total=subtotal+delivery;
+  document.getElementById('cartSummary').innerHTML=`<div style="display:flex;justify-content:space-between;margin-top:10px"><span>Subtotal</span><b>GH¢ ${subtotal}</b></div><div style="display:flex;justify-content:space-between"><span>Delivery</span><b>${delivery===0?'FREE':'GH¢ '+delivery}</b></div><div style="display:flex;justify-content:space-between;font-size:18px;margin-top:8px"><span>Total</span><b>GH¢ ${total}</b></div>`;
+  document.getElementById('checkoutSummary').innerHTML=cart.map(i=>`${i.name} (Size ${i.size}) x ${i.qty} - GH¢ ${i.price*i.qty}`).join('<br>')+`<br><br><b>Delivery: GH¢ ${delivery} | Total: GH¢ ${total}</b>`;
+}
+function changeQty(idx,d){cart[idx].qty+=d;if(cart[idx].qty<=0)cart.splice(idx,1);updateCart()}
+function removeItem(idx){cart.splice(idx,1);updateCart()}
+function openCart(){document.getElementById('cartDrawer').classList.add('open');document.getElementById('overlay').classList.add('show')}
+function closeCart(){document.getElementById('cartDrawer').classList.remove('open');document.getElementById('overlay').classList.remove('show')}
+function showPay(type){
+  document.getElementById('payMomo').style.display=type==='momo'?'block':'none';
+  document.getElementById('payCard').style.display=type==='card'?'block':'none';
+  document.getElementById('payCash').style.display=type==='cash'?'block':'none';
+  document.getElementById('tabMomo').classList.toggle('active',type==='momo');
+  document.getElementById('tabCard').classList.toggle('active',type==='card');
+  document.getElementById('tabCash').classList.toggle('active',type==='cash');
+}
+function showToast(msg){const t=document.getElementById('toast');t.innerText=msg;t.style.display='block';setTimeout(()=>t.style.display='none',2500)}
+function notifyMe(name){window.open(`https://wa.me/233595270488?text=Hi Stancy, Please notify me when ${name} is back in stock.`,'_blank')}
+function placeOrder(){
+  const name=document.getElementById('custName').value;const phone=document.getElementById('custPhone').value;const loc=document.getElementById('custLocation').value;
+  if(!name||!phone||!loc){alert('Please fill your Name, Phone and Location');return}
+  if(cart.length===0){alert('Your cart is empty.');return}
+  const subtotal=cart.reduce((a,b)=>a+b.price*b.qty,0);const delivery=subtotal>=500?0:30;const total=subtotal+delivery;
+  const msg=`Hi Pretty by Stancy, I want to order:%0A%0A${cart.map(i=>`${i.name} - Size ${i.size} x${i.qty} = GH¢${i.price*i.qty}`).join('%0A')}%0A%0ADelivery: GH¢${delivery}%0ATotal: GH¢${total}%0AName: ${name}%0APhone: ${phone}%0ALocation: ${loc}`;
   window.open(`https://wa.me/233595270488?text=${msg}`,'_blank');
+  showToast('Order sent. We will confirm on WhatsApp.');cart=[];updateCart();
 }
-function openAdmin(){ document.getElementById('adminModal').classList.add('open'); }
-function closeAdmin(){ document.getElementById('adminModal').classList.remove('open'); }
-async function addDress(){
-  const name=document.getElementById('pName').value.trim();
-  const price=document.getElementById('pPrice').value;
-  const oldPrice=document.getElementById('pOld').value;
-  const category=document.getElementById('pCat').value||'Evening';
-  const image=document.getElementById('pImg').value.trim();
-  const desc=document.getElementById('pDesc').value;
-  if(!name||!price||!image){ alert('Please fill Name, Price and Image Link'); return; }
-  await db.collection('dresses').add({name,price:Number(price),oldPrice:oldPrice?Number(oldPrice):null,category,image,desc,createdAt:Date.now()});
-  alert('Dress added! It is live now.');
-  document.getElementById('pName').value='';document.getElementById('pPrice').value='';document.getElementById('pImg').value='';
-}
-async function deleteDress(id){ if(confirm('Delete this dress?')){ await db.collection('dresses').doc(id).delete(); } }
-db.collection('dresses').orderBy('createdAt','desc').onSnapshot(snap=>{ allDresses = snap.docs.map(d=>({id:d.id,...d.data()})); render(); });
+function sendEnquiry(){const n=document.getElementById('contactName').value||'Customer';const m=document.getElementById('contactMsg').value||'Hi, I have a question';window.open(`https://wa.me/233595270488?text=Hi Stancy, I am ${n}. ${m}`,'_blank')}
+renderProducts();updateCart();
 </script>
 </body>
 </html>
